@@ -1,0 +1,37 @@
+<form 
+    class="card"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+>
+    <div class="card-content">
+        <span class="card-title"></span>
+        <div class="form-group">
+            <label for="dance">Dance:</label>
+            <select class="form-control" formControlName="dance" 
+                    #selectedValue name="selectedDance" id="selectedDances" 
+                    [(ngModel)]="selectedDance" (ngModelChange)="addDanceToSelected($event)">
+                <option *ngFor="let dance of dances" [ngValue]="dance">{{dance.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="group_level">Group level:</label>
+            <select class="form-control" formControlName="group_level" 
+                    #selectedValue name="selectedLevels" id="selectedLevels" 
+                    [(ngModel)]="selectedLevel" (ngModelChange)="addLevelToSelected($event)">
+                <option *ngFor="let level of levels" [value]="level.level">{{level.level}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="card-action">
+        <button 
+            type="submit"
+            class="form_button"
+            [disabled]="form.invalid || form.disabled"
+        >Save</button>
+    </div>
+</form>
+
+<div class="admin-block">
+    <router-outlet></router-outlet>
+</div>
+

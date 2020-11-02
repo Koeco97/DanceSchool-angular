@@ -1,0 +1,32 @@
+<div class="select">
+  <label>Sort by: </label>
+  <select  (change)="addSortToSelected($event.target.value)">
+    <option *ngFor="let item of sorts" [value]="item.value">{{item.name}}</option>
+</select>
+</div>
+<table>
+    <thead>
+      <tr>
+        <th>DANCE</th>
+        <th>LEVEL</th>
+        <th>TEACHER</th>
+        <th>BEGIN</th>
+        <th>END</th>
+        <th>LENGTH</th>
+        <th>STATUS</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let lesson of lessons">
+            <td>{{lesson.dance}}</td>
+            <td>{{lesson.group_level}}</td>
+            <td>{{lesson.teacher}}</td>
+            <td>{{lesson.begin|date:'short'}}</td>
+            <td>{{lesson.end|date:'short'}}</td>
+            <td>{{lesson.length}}</td>
+            <td>{{lesson.status}}</td>
+    </tbody>
+</table>
+
+
+

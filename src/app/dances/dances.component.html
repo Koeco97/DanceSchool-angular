@@ -1,0 +1,23 @@
+<table>
+    <thead>
+      <tr>
+        <th>DANCE</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='cursor:pointer' *ngFor="let dance of dances" (click)="rowClicked(dance)">
+            <td>{{dance.name}}</td>
+            <td>
+              <input type="checkbox" (change)="checkBoxClicked()">
+            </td>
+    </tbody>
+</table>
+<div class="buttons">
+    <button type="submit" (click)="addDance()">add</button>
+    <button type="submit" (click)="deleteDance()">delete</button>
+</div>
+  
+  
+  
+  

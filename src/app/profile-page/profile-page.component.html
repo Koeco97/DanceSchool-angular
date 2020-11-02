@@ -1,0 +1,93 @@
+<form 
+    class="card"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+>
+    <div class="card-content">
+        <span class="card-title"></span>
+        <div class="form-group">
+            <label for="second_name">Second name:</label>
+            <input 
+                class="form-input"
+                formControlName="second_name"
+                id="second_name" 
+                type="text"
+                [ngClass]="{'invalid': form.get('second_name').invalid && form.get('second_name').touched}"
+            >
+            <span 
+                class="helper-text-red"
+                *ngIf="form.get('second_name').invalid && form.get('second_name').touched"
+            >
+                <span class="helper-text-red" *ngIf="form.get('second_name').errors['second_name']">Field is empty</span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="first_name">First name:</label>
+            <input 
+                class="form-input"
+                formControlName="first_name"
+                id="first_name" 
+                type="text"
+                [ngClass]="{'invalid': form.get('first_name').invalid && form.get('first_name').touched}"
+            >
+            <span 
+                class="helper-text-red"
+                *ngIf="form.get('first_name').invalid && form.get('first_name').touched"
+            >
+                <span class="helper-text-red" *ngIf="form.get('first_name').errors['first_name']">Field is empty</span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last name:</label>
+            <input 
+                class="form-input"
+                formControlName="last_name"
+                id="last_name" 
+                type="text"
+                [ngClass]="{'invalid': form.get('last_name').invalid && form.get('last_name').touched}"
+            >
+            <span 
+                class="helper-text-red"
+                *ngIf="form.get('last_name').invalid && form.get('last_name').touched"
+            >
+                <span class="helper-text-red" *ngIf="form.get('last_name').errors['last_name']">Field is empty</span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="birthday">Birthday:</label>
+            <input 
+                class="form-input"
+                formControlName="birthday"
+                id="birthday" 
+                type="date"
+            >
+        </div>
+        <div class="form-group">
+            <label for="sex">Sex:</label>
+            <select class="form-control" formControlName="sex" 
+                    #selectedValue name="selectedSexes" id="selectedSexes" 
+                    [(ngModel)]="selectedSex" (ngModelChange)="addSexToSelect($event)">
+                <option *ngFor="let item of sex" [value]="item">{{item}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Phone number:</label>
+            <input 
+                class="form-input"
+                formControlName="phone_number"
+                id="phone_number" 
+                type="text"
+            >
+        </div>
+    </div>
+    <div class="card-action">
+        <button 
+            type="submit"
+            class="form_button"
+        >Save</button>
+    </div>
+</form>
+
+<div class="admin-block">
+    <router-outlet></router-outlet>
+</div>

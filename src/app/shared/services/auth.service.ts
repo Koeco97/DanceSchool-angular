@@ -19,6 +19,7 @@ export class AuthService{
     }
 
     login(user: User): Observable<{token: string}>{
+        localStorage.setItem('e-mail', user.email.toString())
         return this.http.post<{token: string}>('/api/authenticate', user)
         .pipe(
             tap(
@@ -59,5 +60,17 @@ export class AuthService{
 
     getRole(): string {
         return this.role
+    }
+
+    isClient(): boolean{
+        return this.getRole() == "ROLE_CLIENT"
+    }
+
+    isAdmin(): boolean{
+        return this.getRole() == "ROLE_ADMIN"
+    }
+
+    isTeacher(): boolean{
+        return this.getRole() == "ROLE_TEACHER"
     }
 }

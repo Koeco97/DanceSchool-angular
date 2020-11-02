@@ -6,7 +6,7 @@ import { AuthService } from './../services/auth.service';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanActivateChild{
+export class ClientGuard implements CanActivate, CanActivateChild{
 
     constructor(private auth: AuthService,
                 private router: Router){
@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate, CanActivateChild{
     }
     
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>{
-        if(this.auth.isAuthenticated()){
+        if(this.auth.isAuthenticated() && this.auth.isClient()){
             return of(true)
         } else {
             this.router.navigate(['/login'], {

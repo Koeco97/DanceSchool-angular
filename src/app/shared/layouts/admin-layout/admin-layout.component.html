@@ -1,0 +1,27 @@
+<nav class="top-menu">
+    <ul class="menu-main">
+        <li class="left-item" routerLinkActive="active"><a href="/admin/start">Directories</a>
+            <ul class="submenu">
+                <li><a href="/admin/setrole">Roles</a></li>
+                <li><a href="/admin/dances">Dances</a></li>
+                <li><a href="/admin/groups">Groups</a></li>
+                <li><a href="/admin/teachers">Teachers</a></li>
+            </ul>
+        </li>
+        <li class="left-item" routerLinkActive="active"><a href="/admin/start">Shedule</a>
+            <ul class="submenu">
+                <li><a href="/admin/newlesson">New lesson</a></li>
+                <li><a href="/admin/notify">Notify teachers</a></li>
+                <li><a href="/admin/declined">Declined lessons</a></li>
+                <li><a href="/admin/schedule">Schedule</a></li>
+            </ul>
+        </li>
+        <li class="right-item" routerLinkActive="active"><a href="#">Log out</a></li>
+        <li class="right-item" routerLinkActive="active"><a href="/admin/profile">Profile</a></li>
+    </ul>
+    <a routerLink="/admin/start" class="navbar-logo">Dance school</a>
+</nav>
+<div class="admin-block">
+    <router-outlet></router-outlet>
+</div>
+

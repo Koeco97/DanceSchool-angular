@@ -40,6 +40,15 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     }
   }
 
+  redirect(){
+    if(this.auth.isAdmin())
+        this.router.navigate(['admin/start']);
+    else if(this.auth.isClient())
+        this.router.navigate(['client/start']);
+    else if(this.auth.isTeacher())
+        this.router.navigate(['teacher/start']);
+  }
+
   onSubmit(){
     this.form.disable()
     this.aSub = this.auth.login(this.form.value)
@@ -51,7 +60,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     .subscribe(
       () => {
       console.log("User is logged in");
-      this.router.navigate['/overview']}
+      this.redirect()}
     )
   }
 

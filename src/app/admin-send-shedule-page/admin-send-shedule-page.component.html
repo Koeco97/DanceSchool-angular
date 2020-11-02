@@ -1,0 +1,27 @@
+<table>
+    <thead>
+      <tr>
+        <th>DANCE</th>
+        <th>LEVEL</th>
+        <th>TEACHER</th>
+        <th>BEGIN</th>
+        <th>END</th>
+        <th>LENGTH</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let lesson of lessons">
+            <td>{{lesson.dance}}</td>
+            <td>{{lesson.group_level}}</td>
+            <td>{{lesson.teacher}}</td>
+            <td>{{lesson.begin|date:'short'}}</td>
+            <td>{{lesson.end|date:'short'}}</td>
+            <td>{{lesson.length}}</td>
+    </tbody>
+</table>
+<div class="button-field">
+  <button type="submit" (click)="onSubmit()">Send</button>
+</div>
+
+
+

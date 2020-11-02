@@ -1,0 +1,67 @@
+<form 
+    class="card"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+>
+    <div class="card-content">
+        <span class="card-title"></span>
+        <div class="form-group">
+            <label for="begin">Start:</label>
+            <input 
+                class="form-input"
+                formControlName="begin"
+                id="begin" 
+                type="datetime-local"
+                [ngClass]="{'invalid': form.get('begin').invalid && form.get('begin').touched}"
+            >
+            <span 
+                class="helper-text-red"
+                *ngIf="form.get('begin').invalid && form.get('begin').touched"
+            >
+                <span class="helper-text-red" *ngIf="form.get('begin').errors['begin']">Field is empty</span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="end">End:</label>
+            <input 
+                class="form-input"
+                formControlName="end"
+                id="end" 
+                type="datetime-local"
+                [ngClass]="{'invalid': form.get('end').invalid && form.get('end').touched}"
+            >
+            <span 
+                class="helper-text-red"
+                *ngIf="form.get('end').invalid && form.get('end').touched"
+            >
+                <span class="helper-text-red" *ngIf="form.get('end').errors['end']">Field is empty</span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="group">Group:</label>
+            <select class="form-control" formControlName="group" 
+                    (change)="addGroupToSelected($event.target.value)">
+                <option *ngFor="let group of groups" [value]="group.id">{{group.dance.name}} - {{group.group_level}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="group">Teacher:</label>
+            <select class="form-control" formControlName="teacher" 
+                    (change)="addTeacherToSelected($event.target.value)">
+                <option *ngFor="let teacher of teachers" [value]="teacher.id">
+                    {{teacher.second_name}} {{teacher.first_name}} {{teacher.last_name}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="card-action">
+        <button 
+            type="submit"
+            class="form_button"
+        >Save</button>
+    </div>
+</form>
+
+<div class="admin-block">
+    <router-outlet></router-outlet>
+</div>

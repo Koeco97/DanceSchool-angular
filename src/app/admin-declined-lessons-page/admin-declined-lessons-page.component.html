@@ -1,0 +1,44 @@
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>DANCE</th>
+        <th>LEVEL</th>
+        <th>TEACHER</th>
+        <th>BEGIN</th>
+        <th>END</th>
+        <th>LENGTH</th>
+        <th>TEACHER FOR REDIRECTION</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='cursor:pointer' *ngFor="let lesson of lessons" (click)="rowClicked(lesson)">
+            <td>{{lesson.id}}</td>
+            <td>{{lesson.dance}}</td>
+            <td>{{lesson.group_level}}</td>
+            <td>{{lesson.teacher}}</td>
+            <td>{{lesson.begin|date:'short'}}</td>
+            <td>{{lesson.end|date:'short'}}</td>
+            <td>{{lesson.length}}</td>
+            <td>
+                <select  (change)="addTeacherIdToSelected($event.target.value)">
+                    <option selected data-="">--select teacher--</option>
+                    <option *ngFor="let teacher of teachers" [value]="teacher.id">
+                        {{teacher.second_name}} {{teacher.first_name}} {{teacher.last_name}}
+                    </option>
+                </select>
+            </td>
+            <td>
+                <input type="checkbox" (change)="checkBoxClicked()">
+            </td>
+    </tbody>
+</table>
+<div class="buttons">
+    <button type="submit" (click)="redirectLesson()">Redirect</button>
+    <button type="submit" (click)="deleteLesson()">Delete</button>
+</div>
+
+
+
+

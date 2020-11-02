@@ -1,0 +1,25 @@
+<table>
+    <thead>
+      <tr>
+        <th>DANCE</th>
+        <th>LEVEL</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='cursor:pointer' *ngFor="let group of groups" (click)="rowClicked(group)">
+            <td>{{group.dance.name}}</td>
+            <td>{{group.group_level}}</td>
+            <td>
+              <input type="checkbox" (change)="checkBoxClicked()">
+            </td>
+    </tbody>
+</table>
+<div class="buttons">
+    <button type="submit" (click)="addGroup()">add</button>
+    <button type="submit" (click)="deleteGroup()">delete</button>
+</div>
+  
+  
+  
+  
